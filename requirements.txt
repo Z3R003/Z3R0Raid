@@ -1,0 +1,5 @@
+colorama
+websocket-client
+pystyle
+requests
+tls_client
