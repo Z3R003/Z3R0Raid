@@ -701,7 +701,6 @@ def Z3R0Raid():
     if choice == '09' or choice == '9':
         file = input(f'{red}[{blue}?{red}] Tokens File (tokens.txt) > ')
         image_file = input(f'{red}[{blue}?{red}] Image File > ')
-        file_extension = input(f'{red}[{blue}?{red}] File Extension (.png/.jpg/.gif) > ')
         with open('tokens.txt','r') as t:
             tokens = t.read().splitlines()
         with open(image_file, 'rb') as i:
