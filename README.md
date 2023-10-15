@@ -21,7 +21,7 @@ Enjoy and do not forget to give it a star. Join new discord server cuz old accou
 1. Add your proxies in `proxies.txt`
 2. Add tokens in `tokens.txt.txt`
 3. Update `config.json` as you want
-4. run start.bat
+4. run `start.bat`
 
 ## 📄・License
 This project is licensed under the GPL General Public License v3.0 License
