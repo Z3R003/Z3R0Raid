@@ -162,7 +162,7 @@ def Token_Checker(session,token):
             print(f"{reset}[ {cyan}{time_rn}{reset} ] {gray}({green}+{gray}) {green}Valid Token{gray} | ", end="")
             sys.stdout.flush()
             Write.Print(f"{token}\n", Colors.red_to_blue, interval=0.000)
-            open('Tokens_Data/Valid_Tokens', 'a').write(f'{token}\n')
+            open('Tokens_Data/Valid_Tokens.txt', 'a').write(f'{token}\n')
             Token_Checker_title()
             if data['premium_type'] == 2:
                 with output_lock:
@@ -171,7 +171,7 @@ def Token_Checker(session,token):
                     print(f"{reset}[ {cyan}{time_rn}{reset} ] {gray}({yellow}*{gray}) {yellow}Nitro Token{gray} | ", end="")
                     sys.stdout.flush()
                     Write.Print(f"{token}\n", Colors.red_to_blue, interval=0.000)
-                    open('Tokens_Data/Nitro_Tokens', 'a').write(f'{token}\n')
+                    open('Tokens_Data/Nitro_Tokens.txt', 'a').write(f'{token}\n')
                     Token_Checker_title()  
             if data['email'] and data['verified'] == True:
                 with output_lock:
@@ -180,7 +180,7 @@ def Token_Checker(session,token):
                     print(f"{reset}[ {cyan}{time_rn}{reset} ] {gray}({blue}/{gray}) {blue}Verified Token{gray} | ", end="")
                     sys.stdout.flush()
                     Write.Print(f"{token}\n", Colors.red_to_blue, interval=0.000)
-                    open('Tokens_Data/Verified_Tokens', 'a').write(f'{token}\n')
+                    open('Tokens_Data/Verified_Tokens.txt', 'a').write(f'{token}\n')
                     Token_Checker_title()  
     else:
         with output_lock:
@@ -189,7 +189,7 @@ def Token_Checker(session,token):
             print(f"{reset}[ {cyan}{time_rn}{reset} ] {gray}({red}-{gray}) {red}Invalid Token{gray} | ", end="")
             sys.stdout.flush()
             Write.Print(f"{token}\n", Colors.red_to_blue, interval=0.000)
-            open('Tokens_Data/Invalid_tokens', 'a').write(f'{token}\n')
+            open('Tokens_Data/Invalid_tokens.txt', 'a').write(f'{token}\n')
             Token_Checker_title()
 def Server_Spammer(session,token,channel,message,howmany):
     global Joined,Token_checked,Message_send,Deleted,vc_joined,pfp_changed,nickname_changed
