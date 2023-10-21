@@ -268,6 +268,7 @@ def Webhook_Spammer(session,webhook, message, times):
 def VC_joiner(token,server_id,channel_id,mute,deaf,stream,video):
     global Joined,Token_checked,Message_send,Deleted,vc_joined,pfp_changed,nickname_changed
     output_lock = threading.Lock()
+    time_rn = get_time()
     print(f"{reset}[ {cyan}{time_rn}{reset} ] {gray}({magenta}/{gray}) {magenta}Joining Vc{gray} | ", end="")
     joiner = WebSocket()
     joiner.connect("wss://gateway.discord.gg/?v=8&encoding=json")
@@ -296,6 +297,7 @@ def VC_joiner(token,server_id,channel_id,mute,deaf,stream,video):
     }))
     with output_lock:
         vc_joined +=1
+        time_rn = get_time()
         print(f"{reset}[ * ] {gray}({green}+{gray}) {green}Joined VC{gray} | ", end="")
         sys.stdout.flush()
         Write.Print(f"{token}\n", Colors.red_to_blue, interval=0.000)
