@@ -137,8 +137,7 @@ def Server_Joiner(session,token,invite):
     else:
         with output_lock:
             time_rn = get_time()
-            print(f"{reset}[ {cyan}{time_rn}{reset} ] {gray}({red}-{gray}) {red}ERROR {gray} | ", end="")
-
+            print(f"{reset}[ {cyan}{time_rn}{reset} ] {gray}({red}-{gray}) {red}ERROR {gray} | {join.text}", end="")
 def Token_Checker(session,token):
     global Joined,Token_checked,Tokens_withnitro,valid_tokens,Message_send,Deleted,vc_joined,pfp_changed,nickname_changed, verified_tokens
     output_lock = threading.Lock()
@@ -297,8 +296,7 @@ def VC_joiner(token,server_id,channel_id,mute,deaf,stream,video):
     }))
     with output_lock:
         vc_joined +=1
-        time_rn = get_time()
-        print(f"{reset}[ {cyan}{time_rn}{reset} ] {gray}({green}+{gray}) {green}Joined VC{gray} | ", end="")
+        print(f"{reset}[ * ] {gray}({green}+{gray}) {green}Joined VC{gray} | ", end="")
         sys.stdout.flush()
         Write.Print(f"{token}\n", Colors.red_to_blue, interval=0.000)
         VC_joiner_title
@@ -636,7 +634,7 @@ def Z3R0Raid():
             tokens = t.read().splitlines()
         print('\n')
         for token in tokens:
-            t = threading.Thread(target=VC_joiner, args=(server_id,channel_id,mute,deaf,stream,video))
+            t = threading.Thread(target=VC_joiner, args=(token,server_id,channel_id,mute,deaf,stream,video))
             t.start()
             threads.append(t)
         update_title_threads = threading.Thread(target=VC_joiner_title)
