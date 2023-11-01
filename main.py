@@ -172,8 +172,7 @@ def Token_Checker(session,token):
                     Write.Print(f"{token}\n", Colors.red_to_blue, interval=0.000)
                     open('Tokens_Data/Nitro_Tokens.txt', 'a').write(f'{token}\n')
                     Token_Checker_title()  
-            if data['email'] and data['verified'] == True:
-                with output_lock:
+            if data['verified'] == True:
                     verified_tokens +=1
                     time_rn = get_time()
                     print(f"{reset}[ {cyan}{time_rn}{reset} ] {gray}({blue}/{gray}) {blue}Verified Token{gray} | ", end="")
@@ -181,6 +180,12 @@ def Token_Checker(session,token):
                     Write.Print(f"{token}\n", Colors.red_to_blue, interval=0.000)
                     open('Tokens_Data/Verified_Tokens.txt', 'a').write(f'{token}\n')
                     Token_Checker_title()  
+            else:
+                with output_lock:
+                    time_rn = get_time()
+                    print(f"{reset}[ {cyan}{time_rn}{reset} ] {gray}({red}-{gray}) {red}Unverified Token{gray} | ", end="")
+                    sys.stdout.flush()
+                    Write.Print(f"{token}\n", Colors.red_to_blue, interval=0.000)
     else:
         with output_lock:
             Token_checked +=1
@@ -190,6 +195,7 @@ def Token_Checker(session,token):
             Write.Print(f"{token}\n", Colors.red_to_blue, interval=0.000)
             open('Tokens_Data/Invalid_tokens.txt', 'a').write(f'{token}\n')
             Token_Checker_title()
+
 def Server_Spammer(session,token,channel,message,howmany):
     global Joined,Token_checked,Message_send,Deleted,vc_joined,pfp_changed,nickname_changed
     output_lock = threading.Lock()
@@ -554,7 +560,6 @@ def Z3R0Raid():
             tokens = t.read().splitlines()
         print('\n')
         for token in tokens:
-            time.sleep(0.3)
             t = threading.Thread(target=Token_Checker, args=(session,token))
             t.start()
             threads.append(t)
