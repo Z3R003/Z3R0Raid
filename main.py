@@ -158,7 +158,7 @@ def Token_Checker(session,token):
             Token_checked +=1
             valid_tokens+=1
             time_rn = get_time()
-            print(f"{reset}[ {cyan}{time_rn}{reset} ] {gray}({green}+{gray}) {green}Valid Token{gray} | ", end="")
+            print(f"{reset}[ {cyan}{time_rn}{reset} ] {gray}({green}+{gray}) {green}Working Token{gray}  | ", end="")
             sys.stdout.flush()
             Write.Print(f"{token}\n", Colors.red_to_blue, interval=0.000)
             open('Tokens_Data/Valid_Tokens.txt', 'a').write(f'{token}\n')
@@ -190,7 +190,7 @@ def Token_Checker(session,token):
         with output_lock:
             Token_checked +=1
             time_rn = get_time()
-            print(f"{reset}[ {cyan}{time_rn}{reset} ] {gray}({red}-{gray}) {red}Invalid Token{gray} | ", end="")
+            print(f"{reset}[ {cyan}{time_rn}{reset} ] {gray}({red}-{gray}) {red}Invalid Token{gray}  | ", end="")
             sys.stdout.flush()
             Write.Print(f"{token}\n", Colors.red_to_blue, interval=0.000)
             open('Tokens_Data/Invalid_tokens.txt', 'a').write(f'{token}\n')
@@ -560,6 +560,7 @@ def Z3R0Raid():
             tokens = t.read().splitlines()
         print('\n')
         for token in tokens:
+            time.sleep(0.15)
             t = threading.Thread(target=Token_Checker, args=(session,token))
             t.start()
             threads.append(t)
